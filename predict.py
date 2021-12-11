@@ -110,7 +110,11 @@ if __name__ == '__main__':
     
     st.image(image,use_column_width=True,caption="Your image")
 
-    version = st.radio("# Choose the version of Image Captioning model",('v1', 'v2', 'v3'))
+    version = st.radio("# Choose the version of Image Captioning model",('v1', 'v2'))
+    if version == 'v1':
+        version = 'v2'
+    else:
+        version = 'v3'
 
     if st.button('Generate captions!'):
         with st.spinner('Your Caption is being generated........'):
