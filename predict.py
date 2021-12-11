@@ -28,9 +28,9 @@ def create_caption_and_mask(start_token, max_length):
 
 @st.cache
 @torch.no_grad()
-def evaluate(tokenizer,version):
+def evaluate(tokenizer):
     config = Config()
-    model = torch.hub.load('AtluriNikhil/ImageCaptioning-using-Transformers', version , pretrained=True)
+    model = torch.hub.load('AtluriNikhil/ImageCaptioning-using-Transformers', 'v3' , pretrained=True)
     start_token = tokenizer.convert_tokens_to_ids(tokenizer._cls_token)
     end_token = tokenizer.convert_tokens_to_ids(tokenizer._sep_token)
     caption, cap_mask = create_caption_and_mask(start_token, config.max_position_embeddings)
@@ -49,9 +49,9 @@ def evaluate(tokenizer,version):
 
     return caption
 
-def result(version):
+def result():
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    output = evaluate(tokenizer,version)
+    output = evaluate(tokenizer)
     ans = tokenizer.decode(output[0].tolist(), skip_special_tokens=True)
     return ans
 
@@ -110,17 +110,11 @@ if __name__ == '__main__':
     
     st.image(image,use_column_width=True,caption="Your image")
 
-    version = st.radio("# Choose the version of Image Captioning model",('v1', 'v2'))
-    if version == 'v1':
-        version = 'v2'
-    else:
-        version = 'v3'
-
     if st.button('Generate captions!'):
         with st.spinner('Your Caption is being generated........'):
             image = coco.val_transform(image)
             image = image.unsqueeze(0)
-            output = result(version)
+            output = result()
             st.success(output.capitalize())
             st.info("Have fun by generating caption for different pictures!!")
         st.balloons()
