@@ -98,7 +98,7 @@ if __name__ == '__main__':
     2. Train the model on Full COCO dataset
     3. Make website more interactive
 
-    Check the model details [here](https://github.com/sankalp1999/Image_Captioning)
+    Check the model details [here](https://github.com/AtluriNikhil/ImageCaptioning-using-Transformers)
     \n Liked it? Give a :star:  on GitHub
     
     ''')
