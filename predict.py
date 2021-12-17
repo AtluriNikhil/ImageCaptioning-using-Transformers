@@ -74,7 +74,7 @@ if __name__ == '__main__':
     st.text("")
     st.info("Welcome! Please upload an image!")   
 
-    args = { 'sunset' : 'data/girl.jpg' }
+    args = { 'sunset' : 'data/friends.png' }
     
     img_upload  = st.file_uploader(label= 'Upload Image', type = ['png', 'jpg', 'jpeg','webp'])
     img_open = args['sunset'] if img_upload is None else img_upload
@@ -89,11 +89,6 @@ if __name__ == '__main__':
     3. Visualizer likes dogs :dog: , men, women and kids. Sorry catlovers.
     4. Profile pictures(Whatsapp) are \n good candidates!
     5. Very few animals work.
-
-    If greater than/equal to two versions say
-    you are an opposite gender, then you are more
-    feminine looking and vice-versa.
-    Upload a close-up to see! :wink:
     
     ''')
  
